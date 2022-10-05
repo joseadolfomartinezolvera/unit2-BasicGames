@@ -9,8 +9,8 @@ public class PlayerController : MonoBehaviour
 {
 
     public float horizontalInput;
-    public float seed = 15.0f;
-    public float xRange = 25;
+    public float seed = 15.0f;      //Variable de velocidad 
+    public float xRange = 25;       //variable del rango del que se puede mover el jugador dentro del valor X 
 
 
     public GameObject projectilPrefab;
@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    
+        //Mantiene al jugador dentro de los limites de la pantalla
         if (transform.position.x < -xRange)
         { 
             transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
@@ -35,7 +37,7 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
         }
 
-
+        //permite mover al jugador de izquierda a derecha 
         horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * seed);
 
